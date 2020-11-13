@@ -19,7 +19,7 @@ function getContentWidth(content, fontSize) {
 // 设置弹幕的初始位置
 function getContentPosition(canvas, fontSize, ctx) {
   const X = canvas.width
-  const Y = parseInt(((canvas.height - fontSize) / fontSize) * Math.random()) * fontSize
+  const Y = Math.ceil(((canvas.height - fontSize) / fontSize) * Math.random()) * fontSize
   ctx.X = X
   ctx.Y = Y
 }
@@ -36,4 +36,11 @@ function countdown(oTime, oBtn) {
     }
   }, 100)
 }
-export { isArray, isObject, getContentWidth, getContentPosition, countdown }
+// 弹幕总数统计
+function countTotal(oCount) {
+  let count = parseInt(oCount.innerText)
+  console.log(count)
+  oCount.innerText = count + 1
+  
+}
+export { isArray, isObject, getContentWidth, getContentPosition, countdown, countTotal }

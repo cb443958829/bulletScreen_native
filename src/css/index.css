@@ -27,22 +27,38 @@ body {
 
 #comment {
     margin-top: 10px;
+    border: 1px solid rgba(223, 14, 14, 0.5);
+    border-radius: 10px;
+    padding: 10px;
 }
 .button,
 .bulletScreen-input,
 .bulletScreen-color {
     vertical-align: middle;
     margin-right: 5px;
+    border-radius: 5px;
 }
 .bulletScreen-input {
-    border: 1px solid rgb(220, 60, 60);
-    width: 284px;
+    border: 1px solid rgb(180 23 203);
+    width:  264px;
     outline: none;
     border-radius: 5px;
+}
+.button {
+    background-color: rgb(233, 195, 195);
+    border: 1px solid rgb(233, 195, 195);
+    margin-left: 5px;
 }
 .time {
     color: red;
     display: inline-block;
     width: 30px;
     text-align: center;
+}
+.bulletCount {
+    color: red;
+    margin-left: 5px;
+}
+.blank {
+    margin-top: 10px;
 }

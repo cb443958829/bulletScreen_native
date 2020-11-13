@@ -1,0 +1,6 @@
+{
+        content: "@cword(3, 30)",
+        "runTime|1-360": 360,
+        "speed |1-10": 10,
+        color: '@rgba()'
+}

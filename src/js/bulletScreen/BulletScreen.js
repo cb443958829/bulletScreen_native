@@ -1,4 +1,4 @@
-import { isArray, isObject, countdown } from '../../utils/index'
+import { isArray, isObject, countdown, countTotal } from '../../utils/index'
 import Bullet from '../bullet/Bullet'
 export default class BulletScreen {
   constructor(oVideoBullet, oCanvasBullet, options) {
@@ -21,8 +21,7 @@ export default class BulletScreen {
     // console.log(this.bulletScreenPool)
   }
   createBulletScreenPool() {
-    return this.bulletData.map((item) => new Bullet(item, this)
-    )
+    return this.bulletData.map((item) => new Bullet(item, this))
   }
   // 渲染函数
   render() {
@@ -31,7 +30,7 @@ export default class BulletScreen {
     !this.bulletPaused && requestAnimationFrame(this.render.bind(this))
   }
   clearRect() {
-    this.canvasCtx.clearRect(0,0, this.canvas.width, this.canvas.height)
+    this.canvasCtx.clearRect(0, 0, this.canvas.width, this.canvas.height)
   }
   // 重置弹幕
   reset() {
@@ -39,7 +38,7 @@ export default class BulletScreen {
     let currentTime = this.video.currentTime
     this.bulletScreenPool.map((bullet) => {
       bullet.stopDraw = false
-      if(currentTime <= bullet.runTime) {
+      if (currentTime <= bullet.runTime) {
         bullet.isInitialized = false
       } else {
         bullet.stopDraw = true
@@ -47,33 +46,36 @@ export default class BulletScreen {
     })
   }
   // 添加弹幕
-  addBulletData(oInput, oColor, oBtn, oTime) {
-    if(!oInput.value) return
+  addBulletData(oInput, oColor, oBtn, oTime, oCount) {
+    if (!oInput.value) return
     oBtn.disabled = true
     countdown(oTime, oBtn)
+    countTotal(oCount)
     let inputValue = oInput.value.trim(),
-    colorValue = oColor.value,
-    currentTime = this.video.currentTime
+      colorValue = oColor.value,
+      currentTime = this.video.currentTime
     const _bulletData = {
       content: inputValue,
       runTime: currentTime,
-      color: colorValue
+      color: colorValue,
     }
     this.bulletScreenPool.push(new Bullet(_bulletData, this))
     oInput.value = ''
+
+
     console.log(this.bulletScreenPool)
   }
   drawBullet() {
     let currentTime = this.video.currentTime
     this.bulletScreenPool.map((bullet) => {
-      if(!bullet.stopDraw && (bullet.runTime <= currentTime)) {
-        if(!bullet.isInitialized) {
-          bullet.initialize();
+      if (!bullet.stopDraw && bullet.runTime <= currentTime) {
+        if (!bullet.isInitialized) {
+          bullet.initialize()
           bullet.isInitialized = true
         }
         bullet.X -= bullet.speed
         bullet.draw()
-        if(bullet.X <= bullet.width * -1) {
+        if (bullet.X <= bullet.width * -1) {
           bullet.stopDraw = true
         }
       }
