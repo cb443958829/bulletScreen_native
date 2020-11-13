@@ -1,10 +1,7 @@
 import { bulletData } from '../assets/bulletData/bulletData'
 import BulletScreen from './bulletScreen/BulletScreen'
-console.log(bulletData)
-// console.log(bulletData)
-;((doc) => {
-  // 获取弹幕数据
 
+;((doc) => {
   // 获取doc元素
   const oVideoBullet = doc.getElementById('video'),
   // canvas
