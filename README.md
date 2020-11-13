@@ -1,5 +1,5 @@
 # bulletScreen_native
-下载依赖,运行项目
+下载依赖
  ```
  npm install
  ```
