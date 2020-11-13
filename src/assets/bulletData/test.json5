@@ -1,0 +1,6 @@
+{
+        content: "@paragraph()",
+        runTime|1-360: 360,
+        speed |1-10: 10,
+        color: '@rgba()'
+}
